@@ -3,7 +3,7 @@
 This is a web music player using react framework for the frontend and express for the backend.  
 
 
-<img src="https://github.com/arunwaran/musicPlayer_react/blob/master/pic/1.png?raw=true" height="400" width="690"/>
+<img src="https://github.com/arunwaran/musicPlayer_react/blob/master/pic/1.png?raw=true" height="569" width="762"/>
 
 ### `npm start`
 
