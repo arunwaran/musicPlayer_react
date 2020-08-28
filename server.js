@@ -27,6 +27,7 @@ app.get('/directory', async function(req,res){
         let scanDir = new scanDirectory();
         try{
             messageResult = await scanDir.startSearch(musicDirectory);
+            readMusicLibrary();
         }
         catch(err){
             messageResult = "Enter a valid Directory.";
@@ -42,7 +43,7 @@ app.get('/directory', async function(req,res){
 app.get('/songs', function(req,res){
     let obj = {
         "message": null,
-        "songs":null
+        "songs": null
     }
     if (musicData != null){
         obj.songs = musicData;
@@ -94,11 +95,14 @@ app.get('/checksong/:id', function(req,res){
 app.use(express.static("public"));
 
 app.listen(port, () => {
-
-    //read json file containing music info
-    if(fs.existsSync(musicLibraryFile)){
-       musicData = JSON.parse(fs.readFileSync(musicLibraryFile));
-    }
-
+    readMusicLibrary();
     console.log("on port: "+ port);
 });
+
+
+// load JSON data into musicData global variable
+function readMusicLibrary(){
+    if(fs.existsSync(musicLibraryFile)){
+        musicData = JSON.parse(fs.readFileSync(musicLibraryFile));
+     }
+}
